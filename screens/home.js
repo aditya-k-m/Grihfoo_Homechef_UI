@@ -1,87 +1,39 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { createAppContainer } from 'react-navigation';
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
+import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-import Profile from './profile';
-import Broadcast from './broadcast';
-import Menu from './menu';
+import PendingOrderCard from './../components/pending_order_card';
+import OngoingOrderCard from './../components/ongoing_order_card';
 
-class Home extends Component {
+
+export default class Home extends Component {
     render() {
         return (
-            <View style={{ flex: 1 }}>
-                <Text style={{ fontSize: 50, fontWeight: '700', textAlign: 'center' }}>Home</Text>
+            <View>
+                <View style={{ flexDirection: 'row', paddingVertical: 10, backgroundColor: '#ffd700', borderBottomWidth: 2, borderBottomColor: '#d3d6db'}}>
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', marginLeft: 10, marginTop: 12, color: '#ffffff' }}>Hi Chef, What's in your kitchen today ?</Text>
+                    <Image style={{ height: 50, width: 50, borderRadius: 200, marginLeft: 43 }} source={{ uri: 'https://mybeautybrides.net/images/31-1566722393222.jpg' }} />
+                </View>
+                <View style={{ borderBottomWidth: 1, borderBottomColor: '#d3d6db'}}>
+                    <Text style={{ paddingLeft: 10, paddingTop: 10 }}>Orders pending for confirmation</Text>
+                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={true}>
+                        <PendingOrderCard name="Paneer Butter Masala" time="01:00 PM" cost="51" />
+                        <PendingOrderCard name="Gobi Masala" time="12:58 PM" cost="25" />
+                        <PendingOrderCard name="Fried Rice" time="12:55 PM" cost="30" />
+                        <PendingOrderCard name="Dal Tadka" time="01:02 PM" cost="28" />
+                    </ScrollView>
+                </View>
+                    <Text style={{marginLeft: 10}}>Ongoing Orders</Text>
+                    <ScrollView showsVerticalScrollIndicator={true} contentContainerStyle={{paddingBottom: 280}}>
+                    <OngoingOrderCard name="Paneer Butter Masala" readyTime="01:30 PM" orderTime="01:10 PM" revenue="51" timer="17"/>
+                    <OngoingOrderCard name="Gobi Masala" readyTime="01:15 PM" orderTime="12:50 PM" revenue="35" timer="2"/>
+                    <OngoingOrderCard name="Dal Tadka" readyTime="01:40 PM" orderTime="01:13 PM" revenue="28" timer="22"/>
+                    <OngoingOrderCard name="Paneer Butter Masala" readyTime="01:17 PM" orderTime="01:12 PM" revenue="51" timer="4"/>
+                    </ScrollView>
             </View>
         )
     }
 }
 
-const TabNav = createMaterialBottomTabNavigator(
-    {
-        Home: {
-            screen: Home,
-            navigationOptions: {
-                tabBarLabel: 'Home',
-                activeColor: '#ffffff',
-                inactiveColor: '#000000',
-                barStyle: { backgroundColor: '#ffd700' },
-                tabBarIcon: () => (
-                    <View>
-                        <Icon name={'home'} size={25} style={{ color: '#ff0000' }} />
-                    </View>
-                )
-            }
-        },
-        Broadcast: {
-            screen: Broadcast,
-            navigationOptions: {
-                tabBarLabel: 'Broadcast',
-                activeColor: '#ffffff',
-                inactiveColor: '#000000',
-                barStyle: { backgroundColor: '#8bcdcd' },
-                tabBarIcon: () => (
-                    <View>
-                        <Icon name={'wifi'} size={25} style={{ color: '#ff0000' }} />
-                    </View>
-                )
-            }
-        },
 
-        Menu: {
-            screen: Menu,
-            navigationOptions: {
-                tabBarLabel: 'Menu',
-                activeColor: '#ffffff',
-                inactiveColor: '#000000',
-                barStyle: { backgroundColor: '#79d70f' },
-                tabBarIcon: () => (
-                    <View>
-                        <Icon name={'shoppingcart'} size={25} style={{ color: '#ff0000' }} />
-                    </View>
-                )
-            }
 
-        },
-
-        Profile: {
-            screen: Profile,
-            navigationOptions: {
-                tabBarLabel: 'Profile',
-                activeColor: '#ffffff',
-                inactiveColor: '#000000',
-                barStyle: { backgroundColor: '#f5a25d' },
-                tabBarIcon: () => (
-                    <View>
-                        <Icon name={'user'} size={25} style={{ color: '#ff0000' }} />
-                    </View>
-                )
-            }
-
-        },
-
-    }
-);
-
-export default createAppContainer(TabNav);
