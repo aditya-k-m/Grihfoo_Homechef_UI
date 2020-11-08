@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
+
 export default class Profile extends Component {
+
+    navigateToCompleted(){
+        this.props.navigation.navigate('CompletedOrder');
+    }
+
     render() {
         return (
             <View style={{ flex: 1 }}>
@@ -29,21 +35,27 @@ export default class Profile extends Component {
                 </View>
                 <View style={{ paddingHorizontal: 10, flex: 2 }}>
                     <Text>Rating</Text>
+
                     <View style={{ flexDirection: 'row' }}>
                         <Icon name={'star'} size={35} style={{ color: '#f5a31a' }} />
                         <Icon name={'star'} size={35} style={{ color: '#f5a31a' }} />
                         <Icon name={'star'} size={35} style={{ color: '#f5a31a' }} />
                         <Icon name={'star'} size={35} style={{ color: '#f5a31a' }} />
+                        <View style={{marginLeft: 'auto'}}>
+                            <TouchableOpacity onPress={() => {this.navigateToCompleted()}} style={{ backgroundColor: '#00bcd4', height: 40, flexDirection: 'row', justifyContent: 'center' }}>
+                                <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold', paddingTop: 8, paddingHorizontal: 10 }}>Completed Orders</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
                 <View style={{ backgroundColor: '#f5a25d', paddingHorizontal: 10, flex: 3 }}>
                     <Text style={{ color: '#ffffff' }}>FAQs</Text>
                 </View>
                 <View style={{ paddingHorizontal: 10, paddingTop: 18, flex: 1.3, flexDirection: 'row' }}>
-                    <TouchableOpacity style={{flex:1, backgroundColor: '#00bcd4',  height: 40, flexDirection: 'row', justifyContent: 'center', marginRight: 10 }}>
+                    <TouchableOpacity style={{ flex: 1, backgroundColor: '#00bcd4', height: 40, flexDirection: 'row', justifyContent: 'center', marginRight: 10 }}>
                         <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold', paddingTop: 8 }}>Customer Support</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{flex:1, backgroundColor: '#ec0101',  height: 40, flexDirection: 'row', justifyContent: 'center'}}>
+                    <TouchableOpacity style={{ flex: 1, backgroundColor: '#ec0101', height: 40, flexDirection: 'row', justifyContent: 'center' }}>
                         <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold', paddingTop: 8 }}>Logout</Text>
                     </TouchableOpacity>
                 </View>
