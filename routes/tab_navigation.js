@@ -34,7 +34,7 @@ const TabNav = createMaterialBottomTabNavigator(
                 barStyle: { backgroundColor: '#8bcdcd' },
                 tabBarIcon: () => (
                     <View>
-                        <Icon name={'wifi'} size={25} style={{ color: '#ff0000' }} />
+                        <Icon name={'totop'} size={25} style={{ color: '#ff0000' }} />
                     </View>
                 )
             }

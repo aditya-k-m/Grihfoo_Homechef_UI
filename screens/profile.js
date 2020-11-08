@@ -9,6 +9,10 @@ export default class Profile extends Component {
         this.props.navigation.navigate('CompletedOrder');
     }
 
+    logout(){
+        this.props.navigation.navigate('Login');
+    }
+
     render() {
         return (
             <View style={{ flex: 1 }}>
@@ -55,7 +59,7 @@ export default class Profile extends Component {
                     <TouchableOpacity style={{ flex: 1, backgroundColor: '#00bcd4', height: 40, flexDirection: 'row', justifyContent: 'center', marginRight: 10 }}>
                         <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold', paddingTop: 8 }}>Customer Support</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ flex: 1, backgroundColor: '#ec0101', height: 40, flexDirection: 'row', justifyContent: 'center' }}>
+                    <TouchableOpacity onPress={() => {this.logout()}} style={{ flex: 1, backgroundColor: '#ec0101', height: 40, flexDirection: 'row', justifyContent: 'center' }}>
                         <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold', paddingTop: 8 }}>Logout</Text>
                     </TouchableOpacity>
                 </View>
