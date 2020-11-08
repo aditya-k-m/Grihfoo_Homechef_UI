@@ -8,8 +8,15 @@ import OngoingOrder from './../screens/ongoing_order';
 import Home from './../screens/home';
 import TabNav from './tab_navigation';
 import Profile from '../screens/profile';
+import Login from '../screens/login';
 
 const screens = {
+    Login: {
+        screen: Login,
+        navigationOptions: {
+            headerShown: false
+        }
+    },
     TabNav: {
         screen: TabNav,
         navigationOptions: {

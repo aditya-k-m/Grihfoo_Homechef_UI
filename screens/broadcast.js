@@ -17,15 +17,18 @@ export default class Broadcast extends Component
             <TextInput 
                    placeholder= 'Cost'
                    style={{textAlign:'left',borderWidth:1, marginVertical: 5, height: 38}}
+                   keyboardType={'numeric'}
                  />
             <View style={{marginVertical: 5, flexDirection: 'row'}}>
             <TextInput 
                    placeholder= 'Accept by'
                    style={{textAlign:'left',borderWidth:1, flex: 1, marginRight: 5, height: 38}}
+                   keyboardType={'numeric'}
                  />
             <TextInput 
                    placeholder= 'Ready by'
                    style={{textAlign:'left',borderWidth:1, flex: 1, marginLeft: 5, height: 38}}
+                   keyboardType={'numeric'}
                  />
             </View>
             </View>
