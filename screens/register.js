@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import Modal from 'react-native-modal';
 
-export default class Login extends Component {
-    constructor(props) {
+export default class Register extends Component {
+
+    constructor(props){
         super(props);
         this.state = {
+            isModalVisible: false,
             pin1: "",
             pin2: "",
             pin3: "",
-            pin4: "",
-            isModalVisible: false
+            pin4: ""
         }
     }
 
@@ -34,22 +35,19 @@ export default class Login extends Component {
         this.props.navigation.navigate('TabNav');
     }
 
-    toRegister() {
-        this.props.navigation.navigate('Register');
-    }
 
-    render() {
-        return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Text style={{ fontSize: 32, fontWeight: 'bold', marginTop: 'auto' }}>Login to Grihfoo</Text>
-                <TextInput placeholder="Enter your number" keyboardType={'numeric'} style={{ textAlign: 'center' }} />
-                <TouchableOpacity onPress={() => { this.getOTP() }} style={{ backgroundColor: '#31326f', height: 40, flexDirection: 'row', marginBottom: 'auto', justifyContent: 'center', borderWidth: 1, borderColor: '#e8e8e8' }}>
+    render(){
+        return(
+            <View style={{flex: 1}}>
+                <View style={{marginTop: 'auto', marginBottom: 'auto', alignItems: 'center'}}>
+                <Text style={{fontSize: 32, fontWeight: 'bold'}}>Register to Grihfoo !</Text>
+                <TextInput placeholder="Enter your name" style={{textAlign: 'center'}} />
+                <TextInput placeholder="Enter your number" style={{textAlign: 'center'}} />
+                <TextInput placeholder="Enter email" style={{textAlign: 'center'}} />
+                <TouchableOpacity onPress={() => {this.getOTP()}} style={{ backgroundColor: '#31326f', height: 40, flexDirection: 'row', justifyContent: 'center', borderWidth: 1, borderColor: '#e8e8e8' }}>
                     <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold', paddingTop: 8, paddingHorizontal: 10 }}>Get OTP</Text>
                 </TouchableOpacity>
-
-                <TouchableOpacity onPress={() => { this.toRegister() }} style={{ paddingBottom: 50, marginTop: 'auto' }} >
-                    <Text style={{fontSize: 16, color: 'blue'}} >New to Grihfoo ? Register here !</Text>
-                </TouchableOpacity>
+                </View>
 
                 <Modal animationIn="slideInUp"
                     animationOut="slideOutDown"

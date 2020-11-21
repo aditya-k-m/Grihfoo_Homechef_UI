@@ -9,6 +9,7 @@ import Home from './../screens/home';
 import TabNav from './tab_navigation';
 import Profile from '../screens/profile';
 import Login from '../screens/login';
+import Register from '../screens/register';
 
 const screens = {
     Login: {
@@ -52,6 +53,12 @@ const screens = {
     },
     Profile: {
         screen: Profile,
+        navigationOptions: {
+            headerShown: false
+        }
+    },
+    Register: {
+        screen: Register,
         navigationOptions: {
             headerShown: false
         }
