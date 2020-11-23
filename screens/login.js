@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import Modal from 'react-native-modal';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default class Login extends Component {
     constructor(props) {
@@ -27,15 +28,40 @@ export default class Login extends Component {
         })
     }
 
+    async startSession() {
+        try {
+            await AsyncStorage.setItem("sessionId", "valid");
+        }
+        catch (error){
+            console.log("Error saving data: "+error);
+        }
+    }
+
     submitOTP() {
         this.setState({
             isModalVisible: false
         });
+        this.startSession();
         this.props.navigation.navigate('TabNav');
     }
 
     toRegister() {
         this.props.navigation.navigate('Register');
+    }
+
+    async componentDidMount() {
+        try {
+            let sessionValue = await AsyncStorage.getItem("sessionId");
+            if (sessionValue === "valid"){
+                this.props.navigation.navigate('TabNav');
+            }
+            else{
+                console.log("Session not found");
+            }
+        }
+        catch (error) {
+            console.log("Error retriving data: "+error);
+        }
     }
 
     render() {

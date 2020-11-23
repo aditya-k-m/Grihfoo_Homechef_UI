@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default class Profile extends Component {
@@ -9,8 +10,19 @@ export default class Profile extends Component {
         this.props.navigation.navigate('CompletedOrder');
     }
 
+    async endSession() {
+        try {
+            await AsyncStorage.clear();
+            console.log("Session Ended successfully");
+        }
+        catch (error) {
+            console.log("Error in clearing value : "+error);
+        }
+    }
+
     logout(){
         this.props.navigation.navigate('Login');
+        this.endSession();
     }
 
     render() {
